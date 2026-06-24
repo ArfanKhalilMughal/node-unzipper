@@ -1,12 +1,8 @@
 {
-  "name": "@zklogic/unzipper",
-  "version": "0.13.0",
+  "name": "unzipper",
+  "version": "0.12.5",
   "description": "Unzip cross-platform streaming API ",
-  "author": {
-    "email": "arfankhalil@hotmail.com",
-    "name": "Arfan Khalil Mughal",
-    "url": "https://github.com/ArfanKhalilMughal"
-  },
+  "author": "Ziggy Jonsson <ziggy.jonsson.nyc@gmail.com>",
   "contributors": [
     {
       "name": "Ziggy Jonsson",
@@ -29,8 +25,9 @@
   "dependencies": {
     "bluebird": "~3.7.2",
     "duplexer2": "~0.1.4",
-    "fs-extra": "^11.2.0",
-    "graceful-fs": "^4.2.2"
+    "fs-extra": "11.3.1",
+    "graceful-fs": "^4.2.2",
+    "node-int64": "^0.4.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",
