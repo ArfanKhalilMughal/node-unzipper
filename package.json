@@ -1,5 +1,5 @@
 {
-  "name": "unzipper",
+  "name": "@zklogic/unzipper",
   "version": "0.13.1",
   "description": "Unzip cross-platform streaming API ",
   "author": {
