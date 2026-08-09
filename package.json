@@ -1,10 +1,10 @@
 {
   "name": "@zklogic/unzipper",
-  "version": "0.13.0",
+  "version": "0.13.2",
   "description": "Unzip cross-platform streaming API ",
   "author": {
-    "email": "arfankhalil@hotmail.com",
     "name": "Arfan Khalil Mughal",
+    "email": "arfankhalil@hotmail.com",
     "url": "https://github.com/ArfanKhalilMughal"
   },
   "contributors": [
@@ -25,12 +25,25 @@
     "type": "git",
     "url": "https://github.com/ArfanKhalilMughal/node-unzipper.git"
   },
+  "forkedFrom": {
+    "repository": "https://github.com/ZJONSSON/node-unzipper",
+    "author": "Ziggy Jonsson",
+    "url": "https://github.com/ZJONSSON"
+  },
+  "bugs": {
+    "email": "arfankhalil@hotmail.com",
+    "url": "https://github.com/ArfanKhalilMughal/node-unzipper/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "license": "MIT",
   "dependencies": {
     "bluebird": "~3.7.2",
     "duplexer2": "~0.1.4",
-    "fs-extra": "^11.2.0",
-    "graceful-fs": "^4.2.2"
+    "fs-extra": "11.3.1",
+    "graceful-fs": "^4.2.2",
+    "@zklogic/node-int64": "^0.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",

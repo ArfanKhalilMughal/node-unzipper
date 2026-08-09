@@ -1,33 +1,61 @@
-name: Publish to NPM
+name: CI & Publish to NPM
 
 on:
-  release:
-    types: [created]
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: 'Tag or branch to publish (defaults to the ref the workflow was triggered from)'
+        required: false
+        type: string
+
+permissions:
+  contents: read
 
 jobs:
-  build:
+  test:
+    uses: ./.github/workflows/test.yml
+    with:
+      ref: ${{ inputs.ref || github.ref }}
+
+  publish:
     runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      id-token: write
 
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
         with:
-          node-version: '20.x'
-          registry-url: 'https://registry.npmjs.org'
+          ref: ${{ inputs.ref || github.ref }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22.x
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+
+      - name: Upgrade npm
+        run: |
+          npm install -g npm@latest
+          npm --version
+          node --version
 
       - name: Install dependencies
         run: npm install
 
-      - name: Lint
-        run: npx eslint .
+      - name: Publish package to npm
+        run: |
+          set -o pipefail
+          npm publish --provenance --access public 2>&1 | tee /tmp/npm-publish.log || EXIT=$?
 
-      - name: Test
-        run: npm test
+          if [ "${EXIT:-0}" -ne 0 ] && grep -qiE "previously published|cannot publish over the previously published versions" /tmp/npm-publish.log; then
+            echo "Version already published, nothing to do"
+            exit 0
+          fi
 
-      - name: Publish package on NPM 📦
-        run: npm publish --access public
+          exit "${EXIT:-0}"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
