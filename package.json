@@ -1,6 +1,6 @@
 {
   "name": "unzipper",
-  "version": "0.12.5",
+  "version": "0.13.1",
   "description": "Unzip cross-platform streaming API ",
   "author": "Ziggy Jonsson <ziggy.jonsson.nyc@gmail.com>",
   "contributors": [
