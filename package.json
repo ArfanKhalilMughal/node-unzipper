@@ -1,6 +1,6 @@
 {
   "name": "@zklogic/unzipper",
-  "version": "0.13.1",
+  "version": "0.13.2",
   "description": "Unzip cross-platform streaming API ",
   "author": {
     "name": "Arfan Khalil Mughal",
@@ -43,7 +43,7 @@
     "duplexer2": "~0.1.4",
     "fs-extra": "11.3.1",
     "graceful-fs": "^4.2.2",
-    "node-int64": "^0.4.0"
+    "@zklogic/node-int64": "^0.5.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.2.0",
