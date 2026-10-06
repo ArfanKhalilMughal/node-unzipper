@@ -5,4 +5,4 @@
 /coverage/
 .tap/
 package-lock.json
-.codesight/*
+.codesight/default.json
