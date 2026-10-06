@@ -60,7 +60,7 @@ async function main() {
       .stream()
       .pipe(fs.createWriteStream('firstFile'))
       .on('error',reject)
-      .on('finish',resolve)
+      .on('close',resolve)
   });
 }
 
@@ -139,7 +139,7 @@ async function main() {
       .stream()
       .pipe(fs.createWriteStream('firstFile'))
       .on('error',reject)
-      .on('finish',resolve)
+      .on('close',resolve)
   });
 }
 
@@ -309,7 +309,7 @@ fs.createReadStream('path/to/archive.zip')
       const size = entry.vars.uncompressedSize; // There is also compressedSize;
       if (fileName === "this IS the file I'm looking for") {
         entry.pipe(fs.createWriteStream('output/path'))
-          .on('finish',cb);
+          .on('close',cb);
       } else {
         entry.autodrain();
         cb();
